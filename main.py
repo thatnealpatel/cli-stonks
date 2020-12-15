@@ -1,4 +1,4 @@
-#!/home/neal/bin/scripts/stockbar/stonks/bin/python3
+#!/home/neal/usr/dev/trading/cli-stonks/stonks/bin/python3
 
 import sys
 from cli_stonks.constants import Constants as const
