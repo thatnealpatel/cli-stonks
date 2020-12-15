@@ -1,5 +1,3 @@
-#!/home/neal/bin/scripts/stockbar/stonks/bin/python3
-
 from dotenv import set_key, load_dotenv, find_dotenv
 import os, pathlib, configparser
 

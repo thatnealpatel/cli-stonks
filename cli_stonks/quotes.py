@@ -1,5 +1,3 @@
-#!/home/neal/bin/scripts/stockbar/stonks/bin/python3
-
 import typing as t
 import time
 from cli_stonks.constants import Constants as const

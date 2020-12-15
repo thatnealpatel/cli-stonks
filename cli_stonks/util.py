@@ -1,5 +1,3 @@
-#!/home/neal/bin/scripts/stockbar/stonks/bin/python3
-
 import datetime, requests, json 
 import typing as t
 import pandas as pd
