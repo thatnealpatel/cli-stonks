@@ -1,0 +1,15 @@
+# private directories
+.data.d/
+bak/
+
+# keys, logs, etc.
+.env
+.access_token
+*.json
+log
+
+# virtual environment
+stonks/
+
+# python stuff
+*pycache*
