@@ -20,7 +20,7 @@ In order to get our own module up and running, you'll need to create an `.env` f
 
 Of course, you may need to adjust the terminal color codes for your own system and emulator. I use rxvt-unicode, so mine are set accordingly.
 
-In addition, if you use a broker other than TD Ameritrade, you'll likely find no use in this module. I would like to automate the the 90-day refresh token intervals. Currently, those are handled manually when the system notifies me of repeated failures to get a new `access_token`.
+In addition, if you use a broker other than TD Ameritrade, you'll likely find no use in this module. I would like to automate the the 90-day refresh token intervals. Currently, those are handled manually when the system notifies me of repeated failures to get a new `access_token`. This is primarily due to the layers of Auth I have behind my own account such as 2FA.
 
 `cloud/` contains the code for the cloud function I set up in Google Cloud Platform. In turn, this function is linked to a BigQuery Table. Much of the cloud functionality is in its infancy at the moment. I intend to put the risk-free rate scraping into its own table as well and automate it via a cloud function.
 
