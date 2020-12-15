@@ -7,8 +7,6 @@ from selenium.webdriver.chrome.options import Options
 from cli_stonks.constants import Constants as const
 
 
-T_BILL_SCRAPE_URL = f'https://ycharts.com/indicators/3_month_t_bill'
-
 
 def annualize(start_bal: float, curr_bal: float, time_in_days: int) -> float:
     return (1 + (curr_bal - start_bal)/start_bal)**(365/time_in_days) - 1
@@ -65,8 +63,6 @@ def refresh_access_token() -> None:
     current_str_time = str(datetime.datetime.now())
 
     try:
-        #print(f'{const.GREEN}Refreshing ACCESS_TOKEN...{const.CLEAR}') # for polybar
-
         headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
         payload = {
             'grant_type': 'refresh_token', 
@@ -85,7 +81,6 @@ def refresh_access_token() -> None:
         write_to_log(log_output)
 
     except Exception as e:
-        #print(f'{const.RED}An error occured updating ACCESS_TOKEN. See log.{const.CLEAR}')
         log_output = f'An error occured updating ACCESS_TOKEN:\n{e}\n'
         write_to_log(log_output)
 
@@ -111,7 +106,6 @@ def clean_symbols(symbols: t.List[str]) -> t.List[str]:
 
 
 def create_polybar_tape(symbol_data: t.List[t.Tuple]) -> str:
-    # symbol_data[i]: tuple<str, list> :: ('AAPL', [115.0, -2.04, false])
     polybar_out = f''
     
     for symbol, data in symbol_data:
@@ -139,8 +133,8 @@ def get_risk_free_rate(debug: bool = False) -> float:
         options = Options()
         options.headless = True
         browser = webdriver.Chrome(executable_path=const.PATH_TO_CHROMEDRIVER, options=options)
-        browser.implicitly_wait(0.3) # seconds
-        browser.get(T_BILL_SCRAPE_URL)
+        browser.implicitly_wait(0.3)
+        browser.get(const.T_BILL_SCRAPE_URL)
         stat_element = browser.find_element_by_class_name('key-stat-title')
         risk_free_rate = float(stat_element.text.split(' ')[0][:-1]) / 100
     except Exception as e:
