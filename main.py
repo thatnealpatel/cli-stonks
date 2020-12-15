@@ -1,7 +1,6 @@
 #!/home/neal/usr/dev/trading/cli-stonks/stonks/bin/python3
 
 import sys
-from cli_stonks.constants import Constants as const
 from cli_stonks.quotes import get_quotes
 from cli_stonks.account import get_account_information
 
