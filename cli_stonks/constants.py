@@ -44,3 +44,4 @@ class Constants:
     TD_ENDPOINT_TOKEN = f'https://api.tdameritrade.com/v1/oauth2/token'
     TD_ENDPOINT_ACCOUNTS = f'https://api.tdameritrade.com/v1/accounts/{TDA_ID}?'
     TD_ENDPOINT_INSTRUMENTS = f'https://api.tdameritrade.com/v1/instruments?'
+    T_BILL_SCRAPE_URL = f'https://ycharts.com/indicators/3_month_t_bill'
