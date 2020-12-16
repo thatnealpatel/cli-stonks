@@ -23,7 +23,7 @@ def format_response(response: t.Dict) -> str:
 def create_account_summary(response: t.Dict) -> str:
     curr_acc = response['securitiesAccount']['currentBalances']
 
-    avail_funds = curr_acc['availableFunds']
+    avail_funds = curr_acc['buyingPowerNonMarginableTrade']
     net_liq = curr_acc['liquidationValue']
     equity = curr_acc['equity']
 
@@ -40,7 +40,7 @@ def create_account_summary(response: t.Dict) -> str:
     rfr_err, rfr = rfr == const.DEFAULT_RISK_FREE_RATE, f'{round(rfr * 100, 2):>11}%' 
     rfr = [f'{rfr}', f'{wrap_text("red", rfr)}'][rfr_err]
     
-    avail_funds = f'${curr_acc["availableFunds"]}'
+    avail_funds = f'${curr_acc["buyingPowerNonMarginableTrade"]}'
     net_liq = f'${curr_acc["liquidationValue"]}'
     equity = f'${curr_acc["equity"]}'
 
