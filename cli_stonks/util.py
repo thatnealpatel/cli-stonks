@@ -151,20 +151,16 @@ def get_risk_free_rate(debug: bool = False) -> float:
 def get_std_devs() -> float:
 
     client = bigquery.Client()
-    table_id = 'cli-stocks.daily_portfolio_stats.daily_netliq'
+    table_id = 'cli-stocks.daily_portfolio_stats.daily_netliq_at_close'
     rows = client.list_rows(table_id)
     data = [(row[0], row[1]) for row in rows]
-    returns_df = pd.DataFrame(data, columns=['day', 'netliq'])
+    returns_df = pd.DataFrame(data, columns=['date', 'netliq'])
 
-    returns_df['per_change'] = returns_df.pct_change()['netliq']
-    returns_df['days_since_last'] = returns_df.diff()['day']
-    
-    mean_return = returns_df.mean(axis=0)['per_change']
-    mean_period = returns_df.mean(axis=0)['days_since_last']
-    periods = 365 / mean_period
+    returns_df['per_change'] = returns_df['netliq'].pct_change()
+    # print(f'returns_df:\n{returns_df.head(25)}')
 
     current_stddev = returns_df.std(axis=0)['per_change']
-    annualized_stddev = current_stddev * periods**(1/2)
+    annualized_stddev = current_stddev * 252**(1/2)
 
     return current_stddev, annualized_stddev
 
