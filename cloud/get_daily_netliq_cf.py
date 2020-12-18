@@ -20,7 +20,7 @@ TDA_ID = os.environ.get('TDA_ID')
 API_KEY = os.environ.get('API_KEY')
 REFRESH_TOKEN = os.environ.get('REFRESH_TOKEN')
 
-DAYS_SINCE_START = (datetime.date.today() - datetime.date(2020, 8, 24)).days
+TODAY = datetime.date.strftime(datetime.date.today(), '%Y-%m-%d') # serialized for JSON
 
 TD_ENDPOINT_TOKEN = f'https://api.tdameritrade.com/v1/oauth2/token'
 TD_ENDPOINT_ACCOUNTS = f'https://api.tdameritrade.com/v1/accounts/{TDA_ID}?'
@@ -61,10 +61,12 @@ def get_netliq():
 
 def write_to_bigquery_table(event = None, context = None):
     client = bigquery.Client()
-    table_id = 'cli-stocks.daily_portfolio_stats.daily_netliq_test' # BQT doesn't allow deletion
-    payload = [{u'day': DAYS_SINCE_START, u'netliq': get_netliq()}]
+    table_id = 'cli-stocks.daily_portfolio_stats.daily_netliq_test'
+    payload = [{u'date': TODAY, u'netliq': get_netliq()}]
     errors = client.insert_rows_json(table_id, payload)
     if not errors:
         print('Successfully added netliq payload to the BQ Table.')
     else:
         print(f'Encountered error(s) while inserting payload:\n{errors}')
+
+# write_to_bigquery_table() # testing
