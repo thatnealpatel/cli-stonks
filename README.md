@@ -37,7 +37,7 @@ The following script takes the place of `sed` one-liners since BSD/GNU `sed` ope
 **Note:** `#!/path/to/python` is the designated replacement expression in `origin:main/main.py`. 
 
 ### `smudge_clean_filter.py`
-```
+```python
 import sys
 from functools import reduce
 
