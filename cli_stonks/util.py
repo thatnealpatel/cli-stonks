@@ -154,14 +154,14 @@ def get_std_devs() -> float:
     table_id = 'cli-stocks.daily_portfolio_stats.daily_netliq_at_close'
     rows = client.list_rows(table_id)
     data = [(row[0], row[1]) for row in rows]
-    returns_df = pd.DataFrame(data, columns=['date', 'netliq'])
+    returns_df = pd.DataFrame(data, columns=['date', 'netliq']).sort_values(by='date')
 
     returns_df['per_change'] = returns_df['netliq'].pct_change()
-    # print(f'returns_df:\n{returns_df.head(25)}')
+    # print(f'returns_df:\n{returns_df.tail(25)}')
 
     current_stddev = returns_df.std(axis=0)['per_change']
     annualized_stddev = current_stddev * 252**(1/2)
-
+    
     return current_stddev, annualized_stddev
 
 
