@@ -13,5 +13,7 @@ if __name__ == "__main__":
             print(get_account_information())
         elif operation == 'quotes':
             print(get_quotes(sys.argv[2:], 'terminal'))
+        else:
+            print(f'operation: {operation} is not supported.')
     else:
         print('Please provide a command line argument.')
