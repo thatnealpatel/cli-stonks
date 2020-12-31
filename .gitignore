@@ -7,9 +7,11 @@ bak/
 .access_token
 *.json
 log
+.cost*
 
 # virtual environment
 stonks/
 
 # python stuff
 *pycache*
+numpy*
