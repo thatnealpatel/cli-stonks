@@ -38,7 +38,7 @@ class Constants:
     WATCHLIST = config_parser['watchlist']
     LOGFILE = root_path + 'log'
     ACCESS_TOKEN_FILE = root_path + '.access_token'
-    PATH_TO_CHROMEDRIVER = r'/usr/bin/chromedriver'
+    PATH_TO_CHROMEDRIVER = os.environ.get('CHROMEDRIVER_PATH')
 
     TD_ENDPOINT_QUOTES = f'https://api.tdameritrade.com/v1/marketdata/quotes?'
     TD_ENDPOINT_TOKEN = f'https://api.tdameritrade.com/v1/oauth2/token'
