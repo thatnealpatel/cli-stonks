@@ -1,4 +1,4 @@
-#!/path/to/project/stonks/bin/python3
+#!/path/to/python
 
 import sys
 from cli_stonks.quotes import get_quotes
