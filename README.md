@@ -1,5 +1,7 @@
 # Command Line Stonks
 
+### NOTE: This branch is currently in the process of being updated to my new broker's (IBKR) API.
+
 This project was originally housed as part of my arch linux system dotfiles. However, it quickly evolved.
 
 The `cli_stonks` module is a fully-functional, command-line wrapper around various parts of the TD Ameritrade API. It currently features quote and account information retrieval, rudimentary risk analysis (e.g. sharpe ratio/risk-free rate scraping), and various other utlity functions--such as storing daily portfolio volatility in a BigQuery table provided you have a Google Cloud account.
