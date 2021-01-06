@@ -26,6 +26,16 @@ In addition, if you use a broker other than TD Ameritrade, you'll likely find no
 
 The `config` file is only relevant if using the `watchlist` functionality to hook into Polybar (see: `main.py`).
 
+### example `config`
+```ini
+[watchlist]
+amd = $
+bac = $
+vix = ^
+es = /
+btc = /
+```
+
 I've done my best to make the code as readable as I can, including using `typing` and comments where functionality might be unclear. 
 
 
